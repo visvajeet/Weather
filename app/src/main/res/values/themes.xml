@@ -1,0 +1,47 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.WeatherApp" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/background</item>
+
+       <item name="android:colorBackground">@color/background</item>
+
+        <item name="android:statusBarColor" tools:targetApi="l">@color/background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="fontFamily">@font/cabin</item>
+    </style>
+
+    <style name="commonAppBarTitleTextStyle">
+        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+    </style>
+
+    <style name="bottomNavActiveText">
+        <item name="android:textSize">@dimen/_8sdp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="styleHeading">
+        <item name="android:layout_marginStart">@dimen/_2sdp</item>
+        <item name="android:padding">@dimen/_10sdp</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/textColorSecondary</item>
+    </style>
+
+    <style name="styleCardView">
+        <item name="cardElevation">0dp</item>
+        <item name="cardCornerRadius">@dimen/_10sdp</item>
+    </style>
+
+    <style name="bottomNavInActiveText">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/_8sdp</item>
+    </style>
+
+    <style name="FullScreenDialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+</resources>

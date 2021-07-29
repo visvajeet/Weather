@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="day"
+            type="com.skf.weatherapp.models.ForecastDay" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        style="@style/styleCardView"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:paddingBottom="@dimen/_5sdp"
+           android:layout_marginStart="@dimen/_10sdp"
+           android:layout_marginEnd="@dimen/_10sdp"
+           android:layout_marginTop="@dimen/_10sdp"
+           android:layout_marginBottom="@dimen/_5sdp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <androidx.appcompat.widget.AppCompatTextView
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               android:id="@+id/tvDate"
+               android:text="@{day.time, default = `Day`}"
+               android:textSize="@dimen/_11sdp"
+               android:textColor="@color/textColorPrimary"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:id="@+id/tvDegree"
+               android:minWidth="@dimen/_40sdp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@{day.avgTemp, default = `-`}"
+               android:textColor="@color/textColorPrimary"
+               android:textSize="@dimen/_25sdp"
+               app:layout_constraintStart_toStartOf="@+id/tvDate"
+               app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+
+           <androidx.appcompat.widget.AppCompatImageView
+               bindImageURL="@{day.conditionImage}"
+               android:layout_marginStart="@dimen/_10sdp"
+               android:id="@+id/ivCondition"
+               android:layout_width="@dimen/_30sdp"
+               android:layout_height="@dimen/_30sdp"
+               app:layout_constraintBottom_toBottomOf="@+id/tvDegree"
+               app:layout_constraintStart_toEndOf="@+id/tvDegree"
+               app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+
+           <androidx.appcompat.widget.AppCompatTextView
+               android:id="@+id/tvMinMaxTemp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@{day.minMaxTemp, default = `-`}"
+               android:textColor="@color/textColorSecondary"
+               android:textSize="@dimen/_14sdp"
+               app:layout_constraintBottom_toBottomOf="@+id/tvDegree"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintTop_toBottomOf="@+id/tvDate" />
+
+           <LinearLayout
+               android:id="@+id/llHumidity"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:orientation="horizontal"
+               app:layout_constraintBottom_toBottomOf="@+id/ivCondition"
+               app:layout_constraintEnd_toStartOf="@+id/tvMinMaxTemp"
+               app:layout_constraintStart_toEndOf="@+id/ivCondition"
+               app:layout_constraintTop_toTopOf="@+id/ivCondition">
+
+               <androidx.appcompat.widget.AppCompatImageView
+                   android:layout_width="@dimen/_15sdp"
+                   app:tint="@color/textColorSecondary"
+                   android:layout_height="@dimen/_15sdp"
+                   app:srcCompat="@drawable/humidity"
+                   />
+
+               <androidx.appcompat.widget.AppCompatTextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="@{day.avgHumidity, default = `-`}"
+                   android:textColor="@color/textColorSecondary"
+                   android:textSize="@dimen/_14sdp" />
+
+           </LinearLayout>
+
+
+
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

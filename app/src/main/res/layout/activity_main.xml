@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            app:liftOnScroll="true"
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include
+                android:id="@+id/layoutAppbar"
+                layout="@layout/layout_appbar_home"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:id="@+id/navHostContainer"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:fitsSystemWindows="true"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_graph"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            app:menu="@menu/menu_bottom_nav"
+            android:layout_gravity="bottom"
+            android:background="@drawable/bottom_nav_shape"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:id="@+id/bottomNavMenu"
+            app:itemTextColor="@drawable/bottom_nav_icon_colors"
+            app:itemIconTint="@drawable/bottom_nav_icon_colors"
+            app:itemTextAppearanceActive="@style/bottomNavActiveText"
+            app:itemTextAppearanceInactive="@style/bottomNavInActiveText"
+            app:labelVisibilityMode="labeled"
+            app:itemIconSize="@dimen/_17sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_55sdp"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+</layout>

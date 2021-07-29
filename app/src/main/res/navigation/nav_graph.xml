@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/todayForecast">
+
+    <fragment
+        tools:layout="@layout/fragment_today_forecast"
+        android:id="@+id/todayForecast"
+        android:name="com.skf.weatherapp.ui.TodayForecastFragment"
+        android:label="TodayForecastFragment" />
+    <fragment
+        android:id="@+id/futureForecast"
+        tools:layout="@layout/fragment_future_forecast"
+        android:name="com.skf.weatherapp.ui.FutureForecastFragment"
+        android:label="FutureForecastFragment" />
+
+    <dialog
+        android:label="SearchFragment"
+        android:id="@+id/searchFragment"
+        android:name="com.skf.weatherapp.ui.SearchFragment"
+        tools:layout="@layout/fragment_search"/>
+
+</navigation>

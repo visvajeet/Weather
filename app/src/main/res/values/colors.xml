@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background">#F6F6F6</color>
+
+    <color name="cyan">#088F9F</color>
+    <color name="appColor">#088F9F</color>
+
+    <color name="textColorPrimary">#373737</color>
+    <color name="textColorSecondary">#636363</color>
+    <color name="textColorInactive">#919191</color>
+    <color name="iconColorPrimary">#252525</color>
+    <color name="iconColorSecondary">#636363</color>
+    <color name="bottomNavColor">#FFFFFF</color>
+    <color name="bottomNavBackgroundColor">#DFDFDF</color>
+
+    <color name="divider">#C1C1C1</color>
+    <color name="cream_dark">#ECECEC</color>
+
+</resources>

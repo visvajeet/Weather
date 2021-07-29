@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.skf.weatherapp.viewmodels.SearchViewModel" />
+
+        <variable
+            name="status"
+            type="com.skf.weatherapp.utils.SearchStatus" />
+        <variable
+            name="locationStatus"
+            type="com.skf.weatherapp.utils.LocationLoadingStatus" />
+
+    </data>
+
+    <LinearLayout
+        android:animateLayoutChanges="true"
+        android:background="@color/background"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            style="@style/styleCardView"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:gravity="center"
+                android:id="@+id/push"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:orientation="horizontal"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_width="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:background="@drawable/click_ripple_effect"
+                    app:tint="@color/iconColorPrimary"
+                    android:id="@+id/ivBack"
+                    android:padding="@dimen/_9sdp"
+                    app:srcCompat="@drawable/left_arrow"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="match_parent" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:enabled="@{viewModel.statusLocation == locationStatus.LOADING ? false : true}"
+                    android:id="@+id/etSearch"
+                    android:paddingStart="@dimen/_2sdp"
+                    android:paddingEnd="@dimen/_2sdp"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:textColorHint="@color/textColorPrimary"
+                    android:imeOptions="actionSearch"
+                    android:textSize="@dimen/_12sdp"
+                    android:layout_width="0dp"
+                    android:hint="@string/search_your_city"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"/>
+
+                <androidx.core.widget.ContentLoadingProgressBar
+                    android:visibility="@{viewModel.status == status.LOADING ? View.VISIBLE : View.INVISIBLE, default = invisible}"
+                    android:id="@+id/pbSearch"
+                    android:indeterminateTint="@color/textColorPrimary"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_height="@dimen/_18sdp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <LinearLayout
+        android:background="@drawable/click_ripple_effect"
+        android:id="@+id/llCurrentLocation"
+        android:padding="@dimen/_10sdp"
+        android:gravity="center|start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                app:tint="@color/appColor"
+                app:srcCompat="@drawable/location"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+
+                android:layout_marginStart="@dimen/_5sdp"
+                android:text="@string/current_location"
+                android:drawablePadding="@dimen/_5sdp"
+                android:textSize="@dimen/_11sdp"
+                android:textColor="@color/appColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:visibility="@{viewModel.statusLocation == locationStatus.LOADING ? View.VISIBLE : View.INVISIBLE, default = invisible}"
+                android:id="@+id/pbCurrentLocation"
+                android:indeterminateTint="@color/appColor"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_height="@dimen/_16sdp"/>
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:background="@color/white"
+                android:paddingBottom="@dimen/_60sdp"
+                android:clipToPadding="false"
+                android:id="@+id/rvSearch"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+                <FrameLayout
+                android:visibility="@{viewModel.status == status.EMPTY ? View.VISIBLE : View.GONE, default = gone}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include layout="@layout/layout_no_results_found"
+                    android:id="@+id/layoutNotFound" />
+
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+</layout>
